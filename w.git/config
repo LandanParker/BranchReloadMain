@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "hotreload"]
+	url = https://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@github.com/LandanParker/TestVueExample4.git
+	fetch = +refs/heads/hotreload_f3a73bc6_9940_47a9_bf5s9_19e638a99547e:refs/remotes/hotreload/hotreload_f3a73bc6_9940_47a9_bf5s9_19e638a99547e
+[branch "hotreload_f3a73bc6_9940_47a9_bf5s9_19e638a99547e"]
+	remote = hotreload
+	merge = refs/heads/hotreload_f3a73bc6_9940_47a9_bf5s9_19e638a99547e

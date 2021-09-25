@@ -1,0 +1,16 @@
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.exe
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.deps.json
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.runtimeconfig.json
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.runtimeconfig.dev.json
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\ref\BranchReload2.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\BranchReload2.pdb
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.csprojAssemblyReference.cache
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.GeneratedMSBuildEditorConfig.editorconfig
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.AssemblyInfoInputs.cache
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.AssemblyInfo.cs
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.csproj.CoreCompileInputs.cache
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\ref\BranchReload2.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.pdb
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\BranchReload2.genruntimeconfig.cache
