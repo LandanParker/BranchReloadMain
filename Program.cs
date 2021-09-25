@@ -168,7 +168,6 @@ namespace BranchReload2
             AddCommand($"git branch -D hotreload_{branchHash}");
             AddCommand($"git stash apply --index");
             
-
             ManualResetEvent mre = new (false);
             Task.Run(async ()=>
             {
