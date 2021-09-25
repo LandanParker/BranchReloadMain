@@ -136,7 +136,7 @@ namespace BranchReload2
                 var (command, queue) = AddCommand("git init .");
             }
 
-            AddCommand($"echo {branchHash} > {new Random().Next(10000000, 1000000000)}.txt");
+            //AddCommand($"echo {branchHash} > {new Random().Next(10000000, 1000000000)}.txt");
 
             var currentBranch = DequeueEach(AddCommand($"git status").queue)
                 .SingleOrDefault(e => e is not null && !e.Equals(e.Replace("On branch ", "")))?.Split(" ")[2]??null;
