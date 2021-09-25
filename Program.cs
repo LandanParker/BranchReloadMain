@@ -58,6 +58,7 @@ namespace BranchReload2
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "cmd";
             startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = true;
             startInfo.RedirectStandardOutput = true;
             startInfo.RedirectStandardError = true;
             startInfo.RedirectStandardInput = true;
