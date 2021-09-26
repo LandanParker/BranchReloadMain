@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Mime;
 using System.Threading;
@@ -104,6 +105,17 @@ namespace BranchReload2
 
         public IEnumerable<string> DequeueEach(ConcurrentQueue<string> items)
         {
+
+            while (true)
+            {
+                ClaspLockCondition(() => items.IsEmpty, async () => { await Task.Delay(50); }, false, out ManualResetEvent mre);
+                
+                items.TryDequeue(out string response);
+                if (response is COMPLETED)
+                    yield break;
+                yield return response;
+            }
+            
             while (true)
             {
                 ManualResetEvent mre = new(false);
@@ -122,6 +134,16 @@ namespace BranchReload2
                     yield break;
                 yield return response;
             }
+        }
+
+        public void ClaspLockCondition(Expression<Func<bool>> conditions, Action action, bool start, out ManualResetEvent reset)
+        {
+            reset = new ManualResetEvent(start);
+            while (conditions.Compile().Invoke())
+            {
+                action();
+            }
+            reset.Set();
         }
 
         public void Perform()
@@ -158,22 +180,25 @@ namespace BranchReload2
             string remoteName = "hotreload";
             
             AddCommand($"git remote add {remoteName} {repoUrl}");
-            AddCommand($"git push {remoteName} --delete hotreload_{branchHash}");
-            AddCommand($"git checkout --orphan hotreload_{branchHash}");
+            //AddCommand($"git push {remoteName} --delete hotreload_{branchHash}");
+            // AddCommand($"git checkout --orphan hotreload_{branchHash}");
+            AddCommand($"git checkout -b hotreload_{branchHash}");
             AddCommand($"git add .");
             AddCommand($"git commit -m test");
-            AddCommand($"git push {remoteName} hotreload_{branchHash}");
+            AddCommand($"git push -f {remoteName} hotreload_{branchHash}");
             AddCommand($"git checkout {currentBranch}");
             AddCommand($"git remote remove {remoteName}");
             AddCommand($"git branch -D hotreload_{branchHash}");
             AddCommand($"git stash apply --index");
-            
+
             ManualResetEvent mre = new (false);
+            
             Task.Run(async ()=>
             {
                 while (!CommandQueue.IsEmpty) await Task.Delay(50);
                 mre.Set();
             });
+            
             mre.WaitOne();
         }
     }
