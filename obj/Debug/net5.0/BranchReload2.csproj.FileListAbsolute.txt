@@ -14,3 +14,17 @@ E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfi
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Debug\net5.0\ref\BranchReload2.dll
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Debug\net5.0\BranchReload2.pdb
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Debug\net5.0\BranchReload2.genruntimeconfig.cache
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Debug\net5.0\BranchReload2.csproj.CopyComplete
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Debug\net5.0\externalbranch_config.json

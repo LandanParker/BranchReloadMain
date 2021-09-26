@@ -13,3 +13,8 @@ E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfi
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\win-x64\ref\BranchReload2.dll
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\win-x64\BranchReload2.pdb
 E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\win-x64\BranchReload2.genruntimeconfig.cache
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\win-x64\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\win-x64\Microsoft.IdentityModel.Logging.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\win-x64\Microsoft.IdentityModel.Tokens.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\bin\Release\net5.0\win-x64\Newtonsoft.Json.dll
+E:\DockerProjects\Management\ManagementService\ManagementService\ManagementConfigurations\BranchReload2\BranchReload2\obj\Release\net5.0\win-x64\BranchReload2.csproj.CopyComplete

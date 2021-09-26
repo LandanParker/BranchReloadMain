@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "J0mCogiVM+46grLrTVVm3otgf54lLaVhy6cqp561q7nuUfpo9VZZS8JgZQ2R8ttmlahlhsP6dayrFtDTGhMLCg==",
+  "dgSpecHash": "SI2HNERTksN3U8wjS4feal6SbvlT5lHjuOTAxGluXitg7fhtNwGtZ7aB++E1DKPMG7XU/8DdhkrW7kmlgeq8DA==",
   "success": true,
   "projectFilePath": "E:\\DockerProjects\\Management\\ManagementService\\ManagementService\\ManagementConfigurations\\BranchReload2\\BranchReload2\\BranchReload2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Home PC\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Home PC\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.12.2\\microsoft.identitymodel.jsonwebtokens.6.12.2.nupkg.sha512",
+    "C:\\Users\\Home PC\\.nuget\\packages\\microsoft.identitymodel.logging\\6.12.2\\microsoft.identitymodel.logging.6.12.2.nupkg.sha512",
+    "C:\\Users\\Home PC\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.12.2\\microsoft.identitymodel.tokens.6.12.2.nupkg.sha512",
+    "C:\\Users\\Home PC\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Home PC\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
