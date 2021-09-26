@@ -109,7 +109,7 @@ namespace BranchReload2
             while (true)
             {
                 ClaspLockCondition(() => items.IsEmpty, async () => { await Task.Delay(50); }, false, out ManualResetEvent mre);
-                
+                mre.WaitOne();
                 items.TryDequeue(out string response);
                 if (response is COMPLETED)
                     yield break;
