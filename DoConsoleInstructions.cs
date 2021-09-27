@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace BranchReload2
     {
         
         public GitFileConfigs GitFileConfigs { get; set; }
+        
         public ConsoleMagic ConsoleMagic { get; set; }
 
         private AsinkOverseer Overseer { get; set; }
@@ -21,7 +23,7 @@ namespace BranchReload2
             GitFileConfigs = configLoad.GitFileConfigs;
         }
         
-        public Func<string, (string command, ConcurrentQueue<string> queue)> AddCommand => ConsoleMagic.AddCommand;
+        public Func<string, (string command, List<string> queue)> AddCommand => ConsoleMagic.AddCommand;
         
         public bool AddGitInitIfNotExists()
         {
@@ -30,7 +32,7 @@ namespace BranchReload2
             return true;
         }
 
-        public string GetCurrentBranch((string command, ConcurrentQueue<string> queue) command) => 
+        public string GetCurrentBranch((string command, List<string> queue) command) => 
             Overseer.DequeueEach(command.queue).SingleOrDefault(e => e is not null && !e.Equals(e.Replace("On branch ", "")))?.Split(" ")[2]??null;
         
         public void PerformGitCommands()
@@ -67,6 +69,9 @@ namespace BranchReload2
             AddCommand($"git commit -m \"Pushed on: {DateTime.UtcNow.ToString()}\"");
             // AddCommand($"git push {remoteName} hotreload_{branchHash}");
             var gitPushHold = Overseer.DequeueEach(AddCommand($"git push -f -u git@github.com:{GitFileConfigs.UserName}/{GitFileConfigs.RepoName}.git hotreload_{GitFileConfigs.BranchId}").queue);
+            
+            var gitFetchHold = Overseer.DequeueEach(AddCommand($"git fetch").queue);//Storing to check for {currentbranch}
+            
             AddCommand($"git checkout {currentBranch}");
             AddCommand($"git remote remove {remoteName}");
             AddCommand($"git branch -D hotreload_{GitFileConfigs.BranchId}");
@@ -75,8 +80,27 @@ namespace BranchReload2
             
             Overseer.YieldUntil(() => ConsoleMagic.CommandQueue.IsEmpty).WaitOne();
             Console.WriteLine(string.Join("out >> ",gitPushHold.Select(e => $"{e}\n")));
+            Console.WriteLine(string.Join("out >> ",gitFetchHold.Select(e => $"{e}\n")));
             Console.WriteLine(string.Join("out >> ",gitStashApplyHold.Select(e => $"{e}\n")));
+
+            const string FETCH_HEAD = nameof(FETCH_HEAD);
+
+            try
+            {
+                bool success = gitFetchHold.Any(e =>
+                {
+                    return e.Contains(FETCH_HEAD) && e.Contains($"hotreload_{GitFileConfigs.BranchId}");
+                });
+
+                Console.WriteLine($"Result: {(success ? "SUCCESS" : "FAIL")}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
             Console.WriteLine(ConsoleMagic.COMPLETED);
+
         }
     }
 }

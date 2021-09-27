@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,11 +19,11 @@ namespace BranchReload2
             Overseer = overseer;
         }
 
-        public ConcurrentQueue<(string command, ConcurrentQueue<string> queue)> CommandQueue = new ();
+        public ConcurrentQueue<(string command, List<string> queue)> CommandQueue = new ();
         
-        public (string command, ConcurrentQueue<string> queue) AddCommand(string args)
+        public (string command, List<string> queue) AddCommand(string args)
         {
-            var hold = (args, new ConcurrentQueue<string>());
+            (string command, List<string> queue) hold = (args, new ());
             CommandQueue.Enqueue(hold);
             return hold;
         }
@@ -32,7 +33,7 @@ namespace BranchReload2
             Console.WriteLine("starting");
             while (true)
             {
-                if (CommandQueue.TryDequeue(out (string command, ConcurrentQueue<string> queue) item))
+                if (CommandQueue.TryDequeue(out (string command, List<string> queue) item))
                 {
                     CreateConsole(item);
                 }
@@ -55,7 +56,7 @@ namespace BranchReload2
             return commandProc;
         }
                 
-        public void CreateConsole((string args, ConcurrentQueue<string> queue) item)
+        public void CreateConsole((string args, List<string> queue) item)
         {
             Process commandProc = CreateCMDInstance();
             
@@ -84,10 +85,10 @@ namespace BranchReload2
             Console.WriteLine($"command > {item.args}");
             Overseer.YieldUntil(() => commandProc.HasExited).WaitOne();
             
-            itemsOut.ToList().ForEach(e=>item.queue.Enqueue(e));
-            itemsErr.ToList().ForEach(e=>item.queue.Enqueue(e));
+            itemsOut.ToList().ForEach(e=>item.queue.Add(e));
+            itemsErr.ToList().ForEach(e=>item.queue.Add(e));
             
-            item.queue.Enqueue(COMPLETED);
+            item.queue.Add(COMPLETED);
         }
     }
 }

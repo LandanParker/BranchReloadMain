@@ -65,19 +65,25 @@ namespace BranchReload2
         
         public void WaitUntil(Expression<Func<bool>> expression) => YieldUntil(expression).WaitOne();
         
-        public IEnumerable<string> DequeueEach(ConcurrentQueue<string> items, string flag = "COMPLETED")
+        public IEnumerable<string> DequeueEach(IList<string> items, string flag = "COMPLETED")
         {
+            int position = 0;
+            int count = 0;
+
             while (true)
             {
-                YieldUntil(() => !items.IsEmpty).WaitOne();
-                string response;
+                YieldUntil(() => count != items.Count).WaitOne();
                 lock (items)
                 {
-                    items.TryDequeue(out response);
+                    count = items.Count;
+                    while (position < count)
+                    {
+                        string response = items[position++];
+                        if (response.Equals(flag))
+                            yield break;
+                        yield return response;
+                    }
                 }
-                if (response.Equals(flag))
-                    yield break;
-                yield return response;
             }
         }
     }
