@@ -10,6 +10,8 @@ namespace BranchReload2
 {
     public class AsinkOverseer
     {
+        
+        public List<Action> CheckYieldBag { get; set; } = new ();
         public ManualResetEvent YieldUntil(Expression<Func<bool>> expression)
         {
             
@@ -28,7 +30,6 @@ namespace BranchReload2
             return reset;
         }
         
-        public List<Action> CheckYieldBag { get; set; } = new ();
 
         public async Task CheckYields()
         {
@@ -61,7 +62,9 @@ namespace BranchReload2
                 Console.WriteLine(e);
             }
         }
+        
         public void WaitUntil(Expression<Func<bool>> expression) => YieldUntil(expression).WaitOne();
+        
         public IEnumerable<string> DequeueEach(ConcurrentQueue<string> items, string flag = "COMPLETED")
         {
             while (true)

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,19 +12,15 @@ namespace BranchReload2
         {
 
             ServiceCollection things = new ServiceCollection();
-            things.AddSingleton<AsinkOverseer>();
-            things.AddSingleton<DoGitConfigLoad>();
-            things.AddSingleton<Builderino>();
-            things.AddSingleton<ConsoleMagic>();
-            things.AddSingleton<DoConsoleInstructions>();
-            
-            var provider = things.BuildServiceProvider();
 
-            var hold = provider.GetService<Builderino>();  
+            var overseer = new AsinkOverseer();
+            var magic = new ConsoleMagic(overseer);
+            var hold = new Builderino(overseer, magic);
+            var instructions = new DoConsoleInstructions(overseer, magic, new DoGitConfigLoad());
             
             hold.ConsoleMagic.LaunchAndDestroy();
             
-            provider.GetService<DoConsoleInstructions>().PerformGitCommands();
+            instructions.PerformGitCommands();
             
             //ping github action
         }
