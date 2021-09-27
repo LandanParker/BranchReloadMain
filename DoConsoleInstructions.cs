@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BranchReload2
 {
@@ -83,24 +84,36 @@ namespace BranchReload2
             Console.WriteLine(string.Join("out >> ",gitFetchHold.Select(e => $"{e}\n")));
             Console.WriteLine(string.Join("out >> ",gitStashApplyHold.Select(e => $"{e}\n")));
 
-            const string FETCH_HEAD = nameof(FETCH_HEAD);
+            bool successDispatch = WasBranchPushSuccessful(gitFetchHold);
+            
+            Console.WriteLine(GitFileConfigs.GetAccessToken());
+            
+            if(successDispatch){
+                
+                Overseer.WaitForTask(RequestActionDispatch.Dispatch(GitFileConfigs.UserName, GitFileConfigs.RepoName, GitFileConfigs.GetAccessToken(), new RequestSendData() {event_type = "inline"}));
+                Console.WriteLine("task has completed");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
 
+            Console.WriteLine($"Result: {(successDispatch?"SUCCESS":"FAIL")}");
+
+        }
+
+        public bool WasBranchPushSuccessful(IEnumerable<string> gitFetchHold)
+        {
+            const string FETCH_HEAD = nameof(FETCH_HEAD);
             try
             {
-                bool success = gitFetchHold.Any(e =>
-                {
-                    return e.Contains(FETCH_HEAD) && e.Contains($"hotreload_{GitFileConfigs.BranchId}");
-                });
-
-                Console.WriteLine($"Result: {(success ? "SUCCESS" : "FAIL")}");
+                return gitFetchHold.Any(e => e.Contains(FETCH_HEAD) && e.Contains($"hotreload_{GitFileConfigs.BranchId}"));
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-
-            Console.WriteLine(ConsoleMagic.COMPLETED);
-
+            return false;
         }
     }
 }

@@ -36,8 +36,8 @@ namespace BranchReload2
                 Console.WriteLine($"Existing key manually entered: {RetrievedConfigs.Key} {RetrievedConfigs.GetHash()}");
                 if (!RetrievedConfigs.KeyHashIsValid())
                 {
-                    RetrievedConfigs.Key = RetrievedConfigs.GetHash();
                     SetAccessTokenAsEnvironmentVariable(RetrievedConfigs.Key);
+                    RetrievedConfigs.Key = RetrievedConfigs.GetHash();
                 }
                 File.WriteAllText(file_name, JsonConvert.SerializeObject(RetrievedConfigs));
             }
@@ -56,6 +56,7 @@ namespace BranchReload2
 
         public void SetAccessTokenAsEnvironmentVariable(string access_key)
         {
+            Console.WriteLine($"STORING: {access_key}");
             Console.WriteLine(">>"+Environment.GetEnvironmentVariable(EnvironmentWriter.AccessTokenTarget, EnvironmentVariableTarget.User));
             Environment.SetEnvironmentVariable(EnvironmentWriter.AccessTokenTarget, access_key, EnvironmentVariableTarget.User);
         }

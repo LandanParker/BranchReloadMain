@@ -15,6 +15,12 @@ namespace BranchReload2
 
         private string _RepoUrl { get; set; }
 
+        public string GetAccessToken()
+        {
+            return Environment.GetEnvironmentVariable(EnvironmentWriter.AccessTokenTarget,
+                EnvironmentVariableTarget.User);
+        }
+        
         public string RepoUrl() => _RepoUrl ??= 
             $"https://{Environment.GetEnvironmentVariable(EnvironmentWriter.AccessTokenTarget, EnvironmentVariableTarget.User)}@github.com/{UserName}/{RepoName}.git";
 

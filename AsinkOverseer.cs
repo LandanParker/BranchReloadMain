@@ -64,6 +64,12 @@ namespace BranchReload2
         }
         
         public void WaitUntil(Expression<Func<bool>> expression) => YieldUntil(expression).WaitOne();
+
+        public void WaitForTask(Task t, bool hold = false)
+        {
+            t.ContinueWith(r => { hold = true; });
+            YieldUntil(() => hold).WaitOne();
+        }
         
         public IEnumerable<string> DequeueEach(IList<string> items, string flag = "COMPLETED")
         {
